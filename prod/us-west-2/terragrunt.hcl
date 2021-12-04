@@ -1,7 +1,7 @@
 remote_state {
   backend = "s3"
   config = {
-    bucket         = "ladviens-analytics-infrastructure"
+    bucket         = "ladviens-analytics-terragrunt-backend"
     key            = "${path_relative_to_include()}/terraform.tfstate"
     region         = "us-west-2"
     encrypt        = true
