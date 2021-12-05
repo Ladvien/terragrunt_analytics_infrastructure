@@ -7,5 +7,6 @@ include {
 }
 
 inputs = {
-    vpc_name = "ladviens-analytics-stack"
+    vpc_name = "ladviens-analytics-stack-vpc"
+    vpc_network_prefix = "10.17"
 }
