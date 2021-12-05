@@ -7,6 +7,11 @@ variable "vpc_name" {
   default = ""
 }
 
+variable "vpc_id" {
+  default = ""
+}
+
+
 variable "environment_name" {
   default = ""
 }
