@@ -1,2 +1,2 @@
 project_name: ladvien-analytics
-environment_name: prod
+env: prod

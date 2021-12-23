@@ -17,3 +17,8 @@ output "vpc_azs" {
   description = "Static availability zones output"
   value = module.vpc.azs
 }
+
+# output "vpc_subnet_id" {
+#   description = "The VPC's subnet ID."
+#   value = module.vpc.private_subnets[0].id
+# }

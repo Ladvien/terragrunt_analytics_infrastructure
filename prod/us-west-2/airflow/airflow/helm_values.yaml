@@ -1,5 +1,4 @@
 # Helm common values
-fernet_key: -m1fzNaZ1CgNKU7yh6fSiEVljDST1FdRbQZ2wCHx3iU=
 
 serviceAccount:
   name: airflow
@@ -45,6 +44,7 @@ airflow:
     AIRFLOW__GOOGLE__OAUTH_CALLBACK_ROUTE: /oauth2callback
     AIRFLOW__GOOGLE__DOMAIN: yourcompany.com
     AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS: "False"
+  fernetKey: -m1fzNaZ1CgNKU7yh6fSiEVljDST1FdRbQZ2wCHx3iU=
 
 scheduler:
   resources:
