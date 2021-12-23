@@ -2,6 +2,10 @@ terraform {
   source = "../../../..//_common_modules/airflow-eks"
 }
 
+locals {
+  helm_values = yamldecode(file("helm_values.yml"))
+}
+
 include {
   path = find_in_parent_folders()
 }
@@ -11,13 +15,12 @@ dependency "vpc" {
 }
 
 inputs = {
-    subnets = dependency.vpc.outputs.vpc_private_subnets
-    vpc_id = dependency.vpc.outputs.vpc_id
+    subnets                    = dependency.vpc.outputs.vpc_private_subnets
+    vpc_id                     = dependency.vpc.outputs.vpc_id
     namespace                  = "airflow"
     airflow_dns_name           = "airflow.mycompany.com"
     # project_name               = var.project_name
     # cluster_id                 = module.airflow-eks.cluster_id
-    # env                        = var.env
     postgres_db_host           = "my-database.host.com"
     postgres_db_name           = "airflow"
     postgres_db_username       = "airflow"
@@ -30,4 +33,7 @@ inputs = {
     chart_version              = "6.9.1"
     google_oauth_client_id     = "XXXXX.apps.googleusercontent.com"
     google_oauth_client_secret = "XXXXX"
+
+    helm_values_file_path     = "/Users/ladvien/ladvien_terragrunt/prod/us-west-2/airflow/airflow-eks/helm_values.yml"
+    helm_values                =  yamldecode(file("/Users/ladvien/ladvien_terragrunt/prod/us-west-2/airflow/airflow-eks/helm_values.yml"))
 }
