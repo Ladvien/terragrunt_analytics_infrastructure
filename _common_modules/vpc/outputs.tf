@@ -18,7 +18,6 @@ output "vpc_azs" {
   value = module.vpc.azs
 }
 
-# output "vpc_subnet_id" {
-#   description = "The VPC's subnet ID."
-#   value = module.vpc.private_subnets[0].id
-# }
+output "allow_ssh_security_group_id"  {
+    value = aws_security_group.allow-ssh.id
+}

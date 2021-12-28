@@ -22,3 +22,29 @@ module "vpc" {
     Environment = "${var.environment_name}"
   }
 }
+
+resource "aws_security_group" "allow-ssh" {
+  vpc_id      = data.aws_vpc.vpc_id.id
+  name        = "allow-ssh"
+  description = "Security group that allows ssh and all egress traffic"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  // Allow direct access to the EC2 boxes for me only.
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+  }
+
+  tags = {
+    Name = "allow-ssh"
+  }
+
+}
