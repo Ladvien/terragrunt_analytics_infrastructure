@@ -11,7 +11,9 @@ dependency "vpc" {
 }
 
 inputs = {
-    instance_type = "t2.micro"
-    # subnet = dependency.vpc.outputs.
-    minutes_after_save_to_shutdown = "10"
+    instance_type                   = "t2.micro"
+    minutes_after_save_to_shutdown  = "10"
+    path_to_public_key              = "~/.ssh/workstation_key.pub"
+    subnets                         = dependency.vpc.outputs.vpc_public_subnets
+    allow_ssh_security_group_id     = dependency.vpc.outputs.allow_ssh_security_group_id
 }
