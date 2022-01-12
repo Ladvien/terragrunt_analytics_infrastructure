@@ -40,8 +40,3 @@ variable "os_user_name" {
   type = string
   description = "The name of user in the workstation's OS."
 }
-
-variable "iam_role_for_workstation_name" {
-  type = string
-  description = "The role attached to the workstation. This ensures the workstation's AWS CLI is able to interact with resources."
-}

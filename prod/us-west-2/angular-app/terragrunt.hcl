@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//_common_modules/workstation"
+  source = "../../..//_common_modules/webapp"
 }
 
 include {
@@ -15,9 +15,8 @@ inputs = {
     path_to_public_key              = "~/.ssh/workstation_key.pub"
     subnets                         = dependency.vpc.outputs.vpc_public_subnets
     allow_ssh_security_group_id     = dependency.vpc.outputs.allow_ssh_security_group_id
-
-    iam_role_for_workstation_name   = "airflow_admin_role"
-    os_user_name                    = "af-admin"
+    
+    os_user_name                    = "angular-app"
 
     startup_script_path             = "./scripts/startup.tpl" 
     python3_packages                = [

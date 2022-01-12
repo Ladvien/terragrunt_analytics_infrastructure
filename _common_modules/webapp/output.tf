@@ -14,6 +14,3 @@ output "python3_packages_installed" {
 #     value = "${data.template_file.startup_script.rendered}"
 # }
 
-output "arns" {
-  value = data.aws_iam_roles.roles
-}
