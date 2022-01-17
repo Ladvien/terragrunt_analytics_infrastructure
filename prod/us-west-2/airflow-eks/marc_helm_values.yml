@@ -1,0 +1,47 @@
+airflow:
+  executor: KubernetesExecutor
+  fernetKey: "foobaaa"
+  config:
+    AIRFLOW__KUBERNETES__DAGS_IN_IMAGE: "True"
+    AIRFLOW__CORE__LOAD_EXAMPLES: "True"
+
+scheduler:
+  replicas: 3
+  # nodeSelector:
+  #   namespace: airflow
+
+web:
+  replicas: 1
+  # nodeSelector:
+  #   namespace: airflow
+
+  service:
+    type: LoadBalancer
+    externalPort: 80
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+      external-dns.alpha.kubernetes.io/hostname: ${web_url}
+
+workers:
+  enabled: false
+  # nodeSelector:
+  #   namespace: airflow
+
+postgresql:
+  existingSecret: airflow-postgres-password
+  enabled: true
+
+externalDatabase:
+  type: postgres
+  host: ${database_host}
+  port: 5432
+  database: airflow
+  user: postgres
+  passwordSecret: "airflow-postgres-password"
+  passwordSecretKey: "postgresql-password"
+
+flower:
+  enabled: false
+
+redis:
+  enabled: false
