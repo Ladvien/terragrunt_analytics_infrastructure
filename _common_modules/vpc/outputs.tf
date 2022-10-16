@@ -21,3 +21,12 @@ output "vpc_azs" {
 output "allow_ssh_security_group_id"  {
     value = aws_security_group.allow-ssh.id
 }
+
+output "vpc_cidr_block" {
+  value = module.vpc.vpc_cidr_block
+}
+
+output "database_subnet_group_name" {
+  value = module.vpc.database_subnet_group_name
+}
+
