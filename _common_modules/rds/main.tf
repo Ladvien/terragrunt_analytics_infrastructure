@@ -64,6 +64,7 @@ module "db" {
   db_name  = var.db_name
   username = var.username
   password = var.password
+  create_random_password = false
   port     = var.port
 
   multi_az                = var.multi_az
