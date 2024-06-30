@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../..//_common_modules/s3-bucket"
+  source = "../../../..//modules/s3-bucket"
 }
 
 include {

@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../..//_common_modules/airflow-eks"
+  source = "../../../..//modules/airflow-eks"
 }
 
 locals {

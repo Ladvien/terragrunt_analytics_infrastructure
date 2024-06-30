@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//_common_modules/workstation"
+  source = "../../..//modules/workstation"
 }
 
 include {

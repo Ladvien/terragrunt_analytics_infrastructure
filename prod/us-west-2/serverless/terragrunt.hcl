@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//_common_modules/serverless-sg"
+  source = "../../..//modules/serverless-sg"
 }
 
 include {

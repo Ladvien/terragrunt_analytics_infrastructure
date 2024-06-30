@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//_common_modules/rds"
+  source = "../../..//modules/rds"
 }
 
 include {

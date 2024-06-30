@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//_common_modules/api-gateway"
+  source = "../../..//modules/api-gateway"
 }
 
 include {

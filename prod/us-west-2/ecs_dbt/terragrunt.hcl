@@ -6,7 +6,7 @@
 
 terraform {
   # source = "git@gitlab.com:ladvien/dev-ops/aws/terraform-modules.git//efs?ref=efs-v0.0.3"
-  source = "../../../../../../_common_modules//dbt"
+  source = "../../../../../../modules//dbt"
 }
 
 

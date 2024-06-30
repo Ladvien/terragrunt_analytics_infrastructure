@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//_common_modules/iam_admin_role"
+  source = "../../..//modules/iam_admin_role"
 }
 
 include {
