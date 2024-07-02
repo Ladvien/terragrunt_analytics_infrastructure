@@ -9,4 +9,5 @@ include {
 inputs = {
     website_name = "maddatum"
     domain = "maddatum.com"
+    cloudfront_distribution_id = "E1XD7G9GFPF7LO"
 }
