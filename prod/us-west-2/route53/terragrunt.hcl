@@ -14,4 +14,6 @@ inputs = {
     domain = "maddatum.com"
     subdomain = "almost"
     vpc_id = dependency.vpc.outputs.vpc_id
+
+    create_cloud_front_certificate = true
 }
