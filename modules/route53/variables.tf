@@ -12,3 +12,8 @@ variable "domain" {
   description = "subdomain"
   default = "example.com"
 }
+
+variable "create_cloud_front_certificate" {
+  description = "Create a CloudFront certificate"
+  default = false
+}
