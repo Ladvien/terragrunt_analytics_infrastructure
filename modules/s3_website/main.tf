@@ -57,6 +57,8 @@ resource "aws_cloudfront_distribution" "distribution" {
   enabled         = true
   is_ipv6_enabled = true
 
+  aliases = [var.domain]
+
   origin {
     domain_name = aws_s3_bucket_website_configuration.hosting.website_endpoint
     origin_id   = aws_s3_bucket.website.bucket_regional_domain_name
@@ -74,7 +76,9 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    # cloudfront_default_certificate = true
+    acm_certificate_arn = data.aws_acm_certificate.issued.arn
+    ssl_support_method  = "sni-only"
   }
 
   restrictions {
@@ -92,8 +96,28 @@ resource "aws_cloudfront_distribution" "distribution" {
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = aws_s3_bucket.website.bucket_regional_domain_name
   }
+
+  // This is contraversial way to apply it, but otherwise there is no way to update invalidation.
+  provisioner "local-exec" {
+    command = "aws cloudfront create-invalidation --distribution-id ${self.id} --paths '/*'"
+  }
 }
 
+
+##################################################
+# Add Alias Records for CloudFront Distribution
+##################################################
+resource "aws_route53_record" "cloudfront" {
+
+  zone_id = data.aws_route53_zone.selected.zone_id
+  name    = var.domain
+  type    = "A"
+  alias {
+    name                   = data.aws_cloudfront_distribution.selected.domain_name
+    zone_id                = data.aws_cloudfront_distribution.selected.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
 
 locals {
   content_types = {
