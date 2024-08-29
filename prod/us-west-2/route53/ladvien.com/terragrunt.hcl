@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//modules/route53"
+  source = "../../../..//modules/route53"
 }
 
 include {
@@ -7,11 +7,11 @@ include {
 }
 
 dependency "vpc" {
-  config_path = "../vpc"
+  config_path = "../../vpc"
 }
 
 inputs = {
-    domain = "maddatum.com"
+    domain = "ladvien.com"
     subdomain = "almost"
     vpc_id = dependency.vpc.outputs.vpc_id
 

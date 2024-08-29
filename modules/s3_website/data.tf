@@ -14,7 +14,3 @@ data "aws_route53_zone" "selected" {
   name         = var.domain
   private_zone = false
 }
-
-data "aws_cloudfront_distribution" "selected" {
-  id = var.cloudfront_distribution_id
-}

@@ -12,8 +12,3 @@ variable "domain" {
     type = string
     description = "The domain of the website"
 }
-
-variable "cloudfront_distribution_id" {
-    type = string
-    description = "The CloudFront distribution ID"
-}

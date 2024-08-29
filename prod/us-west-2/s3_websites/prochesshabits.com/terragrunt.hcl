@@ -7,6 +7,7 @@ include {
 }
 
 inputs = {
-    website_name = "ladvien"
-    domain = "ladvien.com"
+    website_name = "prochesshabits"
+    domain = "prochesshabits.com"
+    cloudfront_distribution_id = "E1XD7G9GFPF7LO"
 }
